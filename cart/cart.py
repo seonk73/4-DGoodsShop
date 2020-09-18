@@ -37,6 +37,7 @@ class Cart:
 
 
     def add(self, product, quantity=1, is_uqdate=False): #cart에 product 추가하기
+        product.id = str(product.id)
         if product.id not in self.cart:
             self.cart[product.id] = {'quantity': 0, 'price': str(product.price)}
 
