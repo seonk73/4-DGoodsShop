@@ -36,12 +36,12 @@ class Cart:
 
 
 
-    def add(self, product, quantity=1, is_uqdate=False): #cart에 product 추가하기
+    def add(self, product, quantity=1, is_update=False): #cart에 product 추가하기
         product.id = str(product.id)
         if product.id not in self.cart:
             self.cart[product.id] = {'quantity': 0, 'price': str(product.price)}
 
-        if is_uqdate:
+        if is_update:
             self.cart[product.id]['quantity'] = quantity
         else:
             self.cart[product.id]['quantity'] += quantity
@@ -49,6 +49,7 @@ class Cart:
         self.save()
 
     def remove(self, product):  #cart에서 product 삭제
+        product.id = str(product.id)
         if product.id in self.cart:
             del self.cart[product.id]
             self.save()
